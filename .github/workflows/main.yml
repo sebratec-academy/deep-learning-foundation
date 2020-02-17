@@ -1,0 +1,41 @@
+name: quality assurance
+
+on: [push]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Set up Node.js
+      uses: actions/setup-node@v1
+    - name: Install dependencies required by the grammar check step
+      run: " pip3 install jupyterlab && npm install --global spellchecker-cli && sudo apt install tree"
+    - name: Convert jupyter notebooks to markdown
+      run: " jupyter nbconvert **/*.ipynb --to markdown"
+    - name: Check grammar
+      run: "spellchecker '**/*.md'  --dictionaries .github/workflows/dictionary.txt"
+    - name: Copy jupyter notebooks to root directory
+      run: " root_dir=$(pwd) && for i in `find . -iname '*.ipynb'`; do cp $i $root_dir; done && tree"
+    - name: Install dependencies required to test the Jupyter notebooks (tensorflow, keras, numpy)
+      run: "echo '{}' > params.json && pip3 install -U pip && pip3 install -U setuptools && pip3 install numpy && pip3 install sklearn && pip3 install matplotlib && pip3 install keras && pip3 install --upgrade tensorflow==2.0.0-rc0"
+    - uses: yaananth/run-notebook@v1
+      env:
+        RUNNER: ${{ toJson(runner) }}
+        SECRETS: ${{ toJson(secrets) }}
+        GITHUB: ${{ toJson(github) }}
+      with:
+        notebook: "perceptrons.ipynb"
+        isReport: False
+        poll: True
+    - uses: actions/upload-artifact@master
+      if: always()
+      with:
+        name: output
+        path: ${{ RUNNER.temp }}/nb-runner
+      env:
+        RUNNER: ${{ toJson(runner) }}
