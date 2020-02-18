@@ -41,6 +41,24 @@ jobs:
         notebook: "Regression model - wine quality.ipynb"
         isReport: False
         poll: True
+    - uses: yaananth/run-notebook@v1
+      env:
+        RUNNER: ${{ toJson(runner) }}
+        SECRETS: ${{ toJson(secrets) }}
+        GITHUB: ${{ toJson(github) }}
+      with:
+        notebook: "Regression model - Boston housing.ipynb"
+        isReport: False
+        poll: True
+    - uses: yaananth/run-notebook@v1
+      env:
+        RUNNER: ${{ toJson(runner) }}
+        SECRETS: ${{ toJson(secrets) }}
+        GITHUB: ${{ toJson(github) }}
+      with:
+        notebook: "Classification model - iris flowers.ipynb"
+        isReport: False
+        poll: True
     - uses: actions/upload-artifact@master
       if: always()
       with:
