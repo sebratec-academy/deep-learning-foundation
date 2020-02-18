@@ -38,7 +38,7 @@ jobs:
         SECRETS: ${{ toJson(secrets) }}
         GITHUB: ${{ toJson(github) }}
       with:
-        notebook: "Neural networks/Regression model - wine quality.ipynb"
+        notebook: "Neural networks/Regression model wine quality.ipynb"
         isReport: False
         poll: True
     - uses: yaananth/run-notebook@v1
@@ -56,7 +56,7 @@ jobs:
         SECRETS: ${{ toJson(secrets) }}
         GITHUB: ${{ toJson(github) }}
       with:
-        notebook: "Classification model iris flowers.ipynb"
+        notebook: "Neural networks/Classification model iris flowers.ipynb"
         isReport: False
         poll: True
     - uses: actions/upload-artifact@master
