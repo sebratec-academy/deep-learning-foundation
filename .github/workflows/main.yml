@@ -47,7 +47,7 @@ jobs:
         SECRETS: ${{ toJson(secrets) }}
         GITHUB: ${{ toJson(github) }}
       with:
-        notebook: "Neural networks/Regression model - Boston housing.ipynb"
+        notebook: "Neural networks/Regression model Boston housing.ipynb"
         isReport: False
         poll: True
     - uses: yaananth/run-notebook@v1
