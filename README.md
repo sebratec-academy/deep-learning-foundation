@@ -19,6 +19,7 @@ Enrolled students have the convenience of an environment that is ready to run th
 You are also free to run these materials in your computer, if you like. You will need to install python 3, pip3 and the following packages:
 
 - numpy
+- pandas
 - sklearn
 - matplotlib
 - keras
