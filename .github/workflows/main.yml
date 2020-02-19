@@ -3,7 +3,7 @@ name: quality assurance
 on: [push]
 
 jobs:
-  run:
+  audit:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -19,17 +19,71 @@ jobs:
       run: " jupyter nbconvert **/*.ipynb --to markdown"
     - name: Check grammar
       run: "spellchecker '**/*.md'  --dictionaries .github/workflows/dictionary.txt"
-    - name: Copy jupyter notebooks to root directory
-      run: " root_dir=$(pwd) && for i in `find . -iname '*.ipynb'`; do cp $i $root_dir; done && tree"
+    - name: Copy project folder structure to runner
+      run: " cp **/*.ipynb . &&  find . -type d | cpio -pd /home/runner/work/_temp/nb-runner && tree /home/runner/work/_temp/nb-runner"
     - name: Install dependencies required to test the Jupyter notebooks (tensorflow, keras, numpy)
-      run: "echo '{}' > params.json && pip3 install -U pip && pip3 install -U setuptools && pip3 install numpy && pip3 install sklearn && pip3 install matplotlib && pip3 install keras && pip3 install --upgrade tensorflow==2.0.0-rc0"
+      run: "echo '{}' > params.json && pip3 install -U pip && pip3 install -U setuptools && pip3 install numpy && pip3 install pandas && pip3 install sklearn && pip3 install matplotlib && pip3 install keras && pip3 install --upgrade tensorflow==2.0.0-rc0"
     - uses: yaananth/run-notebook@v1
       env:
         RUNNER: ${{ toJson(runner) }}
         SECRETS: ${{ toJson(secrets) }}
         GITHUB: ${{ toJson(github) }}
       with:
-        notebook: "perceptrons.ipynb"
+        notebook: "Introduction/perceptrons.ipynb"
+        isReport: False
+        poll: True
+    - uses: yaananth/run-notebook@v1
+      env:
+        RUNNER: ${{ toJson(runner) }}
+        SECRETS: ${{ toJson(secrets) }}
+        GITHUB: ${{ toJson(github) }}
+      with:
+        notebook: "Neural-networks/Regression-model-wine-quality.ipynb"
+        isReport: False
+        poll: True
+    - uses: yaananth/run-notebook@v1
+      env:
+        RUNNER: ${{ toJson(runner) }}
+        SECRETS: ${{ toJson(secrets) }}
+        GITHUB: ${{ toJson(github) }}
+      with:
+        notebook: "Neural-networks/Regression-model-Boston-housing.ipynb"
+        isReport: False
+        poll: True
+    - uses: yaananth/run-notebook@v1
+      env:
+        RUNNER: ${{ toJson(runner) }}
+        SECRETS: ${{ toJson(secrets) }}
+        GITHUB: ${{ toJson(github) }}
+      with:
+        notebook: "Neural-networks/Classification-model-iris-flowers.ipynb"
+        isReport: False
+        poll: True
+    - uses: yaananth/run-notebook@v1
+      env:
+        RUNNER: ${{ toJson(runner) }}
+        SECRETS: ${{ toJson(secrets) }}
+        GITHUB: ${{ toJson(github) }}
+      with:
+        notebook: "Neural-networks/Solutions/Regression-model-wine-quality.ipynb"
+        isReport: False
+        poll: True
+    - uses: yaananth/run-notebook@v1
+      env:
+        RUNNER: ${{ toJson(runner) }}
+        SECRETS: ${{ toJson(secrets) }}
+        GITHUB: ${{ toJson(github) }}
+      with:
+        notebook: "Neural-networks/Solutions/Regression-model-Boston-housing.ipynb"
+        isReport: False
+        poll: True
+    - uses: yaananth/run-notebook@v1
+      env:
+        RUNNER: ${{ toJson(runner) }}
+        SECRETS: ${{ toJson(secrets) }}
+        GITHUB: ${{ toJson(github) }}
+      with:
+        notebook: "Neural-networks/Solutions/Classification-model-iris-flowers.ipynb"
         isReport: False
         poll: True
     - uses: actions/upload-artifact@master
