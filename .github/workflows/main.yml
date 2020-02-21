@@ -13,14 +13,22 @@ jobs:
         python-version: 3.7
     - name: Set up Node.js
       uses: actions/setup-node@v1
+    - uses: actions/cache@v1
+      with:
+        path: ~/.cache/pip
+        key: "730326aca6be924ab42d54e9d58b1184"
+    - uses: actions/cache@v1
+      with:
+        path: ~/.npm
+        key: "ac4d7baefb590ce47f525ca2063ee844"
     - name: Install dependencies required by the grammar check step
-      run: " pip3 install jupyterlab && npm install --global spellchecker-cli && sudo apt install tree"
+      run: " pip3 install jupyterlab && npm install --global spellchecker-cli"
     - name: Convert jupyter notebooks to markdown
       run: " jupyter nbconvert **/*.ipynb --to markdown"
     - name: Check grammar
       run: "spellchecker '**/*.md'  --dictionaries .github/workflows/dictionary.txt"
     - name: Copy project folder structure to runner
-      run: " cp **/*.ipynb . &&  find . -type d | cpio -pd /home/runner/work/_temp/nb-runner && tree /home/runner/work/_temp/nb-runner"
+      run: " cp **/*.ipynb . &&  find . -type d | cpio -pd /home/runner/work/_temp/nb-runner"
     - name: Install dependencies required to test the Jupyter notebooks (tensorflow, keras, numpy)
       run: "echo '{}' > params.json && pip3 install -U pip && pip3 install -U setuptools && pip3 install numpy && pip3 install pandas && pip3 install sklearn && pip3 install matplotlib && pip3 install keras && pip3 install --upgrade tensorflow==2.0.0-rc0"
     - uses: yaananth/run-notebook@v1
@@ -84,6 +92,15 @@ jobs:
         GITHUB: ${{ toJson(github) }}
       with:
         notebook: "Neural-networks/Solutions/Classification-model-iris-flowers.ipynb"
+        isReport: False
+        poll: True
+    - uses: yaananth/run-notebook@v1
+      env:
+        RUNNER: ${{ toJson(runner) }}
+        SECRETS: ${{ toJson(secrets) }}
+        GITHUB: ${{ toJson(github) }}
+      with:
+        notebook: "Data/Dealing-with-data.ipynb"
         isReport: False
         poll: True
     - uses: actions/upload-artifact@master
