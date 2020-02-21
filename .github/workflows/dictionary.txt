@@ -51,4 +51,7 @@ pip3
 sklearn
 matplotlib
 tensorflow
-
+subreddit
+Kaggle
+jupyter
+Github
