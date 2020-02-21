@@ -86,6 +86,15 @@ jobs:
         notebook: "Neural-networks/Solutions/Classification-model-iris-flowers.ipynb"
         isReport: False
         poll: True
+    - uses: yaananth/run-notebook@v1
+      env:
+        RUNNER: ${{ toJson(runner) }}
+        SECRETS: ${{ toJson(secrets) }}
+        GITHUB: ${{ toJson(github) }}
+      with:
+        notebook: "Data/Dealing-with-data.ipynb"
+        isReport: False
+        poll: True
     - uses: actions/upload-artifact@master
       if: always()
       with:
