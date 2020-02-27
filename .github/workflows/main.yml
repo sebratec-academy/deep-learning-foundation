@@ -37,7 +37,7 @@ jobs:
         SECRETS: ${{ toJson(secrets) }}
         GITHUB: ${{ toJson(github) }}
       with:
-        notebook: "Introduction/perceptrons.ipynb"
+        notebook: "1-Introduction/perceptrons.ipynb"
         isReport: False
         poll: True
     - uses: yaananth/run-notebook@v1
@@ -46,7 +46,7 @@ jobs:
         SECRETS: ${{ toJson(secrets) }}
         GITHUB: ${{ toJson(github) }}
       with:
-        notebook: "Neural-networks/Regression-model-wine-quality.ipynb"
+        notebook: "2-Neural-networks/Regression-model-wine-quality.ipynb"
         isReport: False
         poll: True
     - uses: yaananth/run-notebook@v1
@@ -55,7 +55,7 @@ jobs:
         SECRETS: ${{ toJson(secrets) }}
         GITHUB: ${{ toJson(github) }}
       with:
-        notebook: "Neural-networks/Regression-model-Boston-housing.ipynb"
+        notebook: "2-Neural-networks/Regression-model-Boston-housing.ipynb"
         isReport: False
         poll: True
     - uses: yaananth/run-notebook@v1
@@ -64,7 +64,7 @@ jobs:
         SECRETS: ${{ toJson(secrets) }}
         GITHUB: ${{ toJson(github) }}
       with:
-        notebook: "Neural-networks/Classification-model-iris-flowers.ipynb"
+        notebook: "2-Neural-networks/Classification-model-iris-flowers.ipynb"
         isReport: False
         poll: True
     - uses: yaananth/run-notebook@v1
@@ -73,7 +73,7 @@ jobs:
         SECRETS: ${{ toJson(secrets) }}
         GITHUB: ${{ toJson(github) }}
       with:
-        notebook: "Neural-networks/Solutions/Regression-model-wine-quality.ipynb"
+        notebook: "2-Neural-networks/Solutions/Regression-model-wine-quality.ipynb"
         isReport: False
         poll: True
     - uses: yaananth/run-notebook@v1
@@ -82,7 +82,7 @@ jobs:
         SECRETS: ${{ toJson(secrets) }}
         GITHUB: ${{ toJson(github) }}
       with:
-        notebook: "Neural-networks/Solutions/Regression-model-Boston-housing.ipynb"
+        notebook: "2-Neural-networks/Solutions/Regression-model-Boston-housing.ipynb"
         isReport: False
         poll: True
     - uses: yaananth/run-notebook@v1
@@ -91,7 +91,7 @@ jobs:
         SECRETS: ${{ toJson(secrets) }}
         GITHUB: ${{ toJson(github) }}
       with:
-        notebook: "Neural-networks/Solutions/Classification-model-iris-flowers.ipynb"
+        notebook: "2-Neural-networks/Solutions/Classification-model-iris-flowers.ipynb"
         isReport: False
         poll: True
     - uses: yaananth/run-notebook@v1
@@ -100,7 +100,16 @@ jobs:
         SECRETS: ${{ toJson(secrets) }}
         GITHUB: ${{ toJson(github) }}
       with:
-        notebook: "Data/Dealing-with-data.ipynb"
+        notebook: "3-Data/Dealing-with-data.ipynb"
+        isReport: False
+        poll: True
+    - uses: yaananth/run-notebook@v1
+      env:
+        RUNNER: ${{ toJson(runner) }}
+        SECRETS: ${{ toJson(secrets) }}
+        GITHUB: ${{ toJson(github) }}
+      with:
+        notebook: "4-Solving-common-challenges/common-problems.ipynb"
         isReport: False
         poll: True
     - uses: actions/upload-artifact@master
