@@ -60,3 +60,7 @@ codeclimate
 Codeclimate
 .github
 .codeclimate
+L1
+L2
+neglectable
+sebratec
