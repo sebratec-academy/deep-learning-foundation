@@ -10,7 +10,7 @@ This repository contains the course materials of Deep Learning Foundation course
 
 ## Course Abstract
 
-In this program, you will develop a strong foundation, both theoretical and practical, of deep learning. With the knowledge acquired here, you will be able to understand what neural networks are, how they learn, and how to use their power to solve real world problems. You will also be able to understand the most cutting-edge research papers on the subject, and will have the opportunity to work in exciting projects and to present your results to industry experts, who will give you valuable feedback.
+You will be able to understand what neural networks are, how they learn, and how to use their power to solve real-world problems. You will also be introduced to research papers on the subject and will have the opportunity to work on exciting projects and present your results to industry experts, who will give you valuable feedback.
 
 ## Running the materials
 
