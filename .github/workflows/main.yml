@@ -40,7 +40,6 @@ jobs:
         notebook: "1-Introduction/perceptrons.ipynb"
         params: "params.json"
         isReport: False
-        poll: True
     - uses: yaananth/run-notebook@v1
       env:
         RUNNER: ${{ toJson(runner) }}
@@ -50,7 +49,6 @@ jobs:
         notebook: "2-Basic-neural-networks/Regression-model-wine-quality.ipynb"
         params: "params.json"
         isReport: False
-        poll: True
     - uses: yaananth/run-notebook@v1
       env:
         RUNNER: ${{ toJson(runner) }}
@@ -60,7 +58,6 @@ jobs:
         notebook: "2-Basic-neural-networks/Regression-model-Boston-housing.ipynb"
         params: "params.json"
         isReport: False
-        poll: True
     - uses: yaananth/run-notebook@v1
       env:
         RUNNER: ${{ toJson(runner) }}
@@ -70,7 +67,6 @@ jobs:
         notebook: "2-Basic-neural-networks/Classification-model-iris-flowers.ipynb"
         params: "params.json"
         isReport: False
-        poll: True
     - uses: yaananth/run-notebook@v1
       env:
         RUNNER: ${{ toJson(runner) }}
@@ -80,7 +76,6 @@ jobs:
         notebook: "2-Basic-neural-networks/Solutions/Regression-model-wine-quality.ipynb"
         params: "params.json"
         isReport: False
-        poll: True
     - uses: yaananth/run-notebook@v1
       env:
         RUNNER: ${{ toJson(runner) }}
@@ -90,7 +85,6 @@ jobs:
         notebook: "2-Basic-neural-networks/Solutions/Regression-model-Boston-housing.ipynb"
         params: "params.json"
         isReport: False
-        poll: True
     - uses: yaananth/run-notebook@v1
       env:
         RUNNER: ${{ toJson(runner) }}
@@ -100,7 +94,6 @@ jobs:
         notebook: "2-Basic-neural-networks/Solutions/Classification-model-iris-flowers.ipynb"
         params: "params.json"
         isReport: False
-        poll: True
     - uses: yaananth/run-notebook@v1
       env:
         RUNNER: ${{ toJson(runner) }}
@@ -110,7 +103,6 @@ jobs:
         notebook: "3-Feeding-your-models-with-data/Dealing-with-data.ipynb"
         params: "params.json"
         isReport: False
-        poll: True
     - uses: yaananth/run-notebook@v1
       env:
         RUNNER: ${{ toJson(runner) }}
@@ -120,7 +112,6 @@ jobs:
         notebook: "4-Solving-common-challenges/common-problems.ipynb"
         params: "params.json"
         isReport: False
-        poll: True
     - uses: actions/upload-artifact@master
       if: always()
       with:
