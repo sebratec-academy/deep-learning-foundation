@@ -22,7 +22,7 @@ jobs:
         path: ~/.npm
         key: "ac4d7baefb590ce47f525ca2063ee844"
     - name: Install dependencies required by the grammar check step
-      run: " pip3 install jupyterlab && npm install --global spellchecker-cli"
+      run: " pip3 install jupyterlab && pip3 install --force-reinstall nbconvert==5.5 && npm install --global spellchecker-cli"
     - name: Convert jupyter notebooks to markdown
       run: " jupyter nbconvert **/*.ipynb --to markdown"
     - name: Check grammar
