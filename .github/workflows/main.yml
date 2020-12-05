@@ -30,7 +30,7 @@ jobs:
     - name: Copy project folder structure to runner
       run: " cp **/*.ipynb . &&  find . -type d | cpio -pd /home/runner/work/_temp/nb-runner"
     - name: Install dependencies required to test the Jupyter notebooks (tensorflow, keras, numpy)
-      run: "echo '{}' > params.json && pip3 install -U pip && pip3 install -U setuptools && pip3 install numpy && pip3 install pandas && pip3 install sklearn && pip3 install matplotlib && pip3 install keras && pip3 install --upgrade tensorflow==2.2.0-rc0"
+      run: "echo '{}' > params.json && pip3 install -U pip && pip3 install -U setuptools && pip3 install -r requirements.txt"
     - uses: yaananth/run-notebook@v1
       env:
         RUNNER: ${{ toJson(runner) }}
